@@ -25,6 +25,7 @@
 package com.boot.ssm.config;
 
 import com.boot.ssm.interceptor.MyInterceptor;
+import com.boot.ssm.interceptor.RequestInterceptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
@@ -46,7 +47,7 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
      */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/pic/**").addResourceLocations("classpath:/static/pic/");
+        registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
     }
 
     /**
@@ -71,5 +72,9 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
         // excludePathPatterns 用于排除拦截
         registry.addInterceptor(new MyInterceptor()).addPathPatterns("/**").excludePathPatterns("/toLogin","/login");
         super.addInterceptors(registry);
+
+        registry.addInterceptor(new RequestInterceptor()).addPathPatterns("/**");
+        super.addInterceptors(registry);
     }
+
 }

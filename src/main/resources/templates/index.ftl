@@ -1,11 +1,17 @@
 <html>
 <head>
     <title>首页</title>
+    <script src="${ctx}/static/js/jquery-1.11.1.min.js?v=${ver}"></script>
+    <script>
+        $(function(){
+            $("#sp").html("欢迎来到王者荣耀");
+        });
+    </script>
+
 </head>
 
 <body>
-    <span>欢迎来到王者荣耀</span>
-
+    <span id="sp"></span>
 
     <#if customers?? && (customers?size>0)>
         <table>
