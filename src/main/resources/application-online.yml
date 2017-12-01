@@ -1,0 +1,20 @@
+# yaml 基本语法规则：
+# 大小写敏感
+# 使用缩进表示层级关系，缩进只允许用空格，不能用tab；缩进的空格数目不重要，只要相同层级的元素左侧对齐即可
+# 支持对象（键值对），数组，纯量
+# 属性名的值和冒号之间必需有空格
+
+# yml文件会被翻译成properties文件，但如果 application.properties 配置的值为中文的时候，读取出来的属性值会出现乱码问题
+#  因为 Spring Boot 是以 iso-8859 的编码方式读取 application.properties 配置文件，application.yml 不会出现
+
+
+server:
+  port: 8087
+
+spring:
+  datasource:
+     druid:
+        url: jdbc:mysql://localhost:3306/demo?useUnicode=true&characterEncoding=UTF-8
+        username: root
+        password: 123123
+        driver-class-name: com.mysql.jdbc.Driver
